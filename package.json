@@ -1,0 +1,26 @@
+{
+  "name": "vc-test",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "serve": "cross-env NODE_ENV=development npx webpack serve"
+  },
+  "author": "Timoffey Cosman <cosman@timoffey.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "*",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "stylus-loader": "^5.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

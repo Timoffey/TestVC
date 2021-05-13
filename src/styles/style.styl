@@ -1,0 +1,71 @@
+@import 'fonts.css'
+vcred = #FE4D4A
+:root
+  --slider-tooltip-arr: 20px
+body
+  font-family: Roboto-Regular
+.stack 
+  display: flex
+.stack__coin 
+  width: 55px
+  height: 55px
+  background-image: url(../img/coin.svg)
+  margin-right: -40px
+.screen1
+  &__title
+    font-family:Roboto-Medium
+    font-size: 22px
+    font-weight: 500
+    margin-top: 16px
+    margin-bottom: 11px
+  &__subtitle
+    font-size: 16px
+
+// Непосредственно слайдер
+.slider
+  position: relative
+  margin-top: 48px
+  &__from,&__to
+    font-family: Roboto-Medium
+    font-size: 18px
+  &__range
+    -webkit-appearance: none
+    width: 454px
+    height: 9px
+    background: #E2E2E2
+    border-radius: 8px
+    background: linear-gradient(90deg, #FF9796 0%,vcred 0%,#E2E2E2 0%)
+
+    // Пипка слайдера для хрома и сафари
+    &::-webkit-slider-thumb 
+      -webkit-appearance: none
+      width: 25px
+      height: 25px
+      background-color:#fff
+      border: 8px solid vcred
+      border-radius: 50%
+
+    // Пипка слайдера для FF
+    &::-moz-range-thumb
+      width: 9px
+      height: 9px
+      background-color:#fff
+      border: 8px solid vcred
+      border-radius: 50%
+
+  // Тултип
+  &__tooltip
+    visibility: hidden
+    background-color: vcred
+    color:#fff
+    position: absolute
+    padding: 5px
+    bottom: 30px
+    border-radius: 5px
+    &::after
+      content: ''
+      position: absolute
+      left: var(--slider-tooltip-arr) 
+      bottom: -12px
+      border: 7px solid transparent
+      border-top: 7px solid vcred
