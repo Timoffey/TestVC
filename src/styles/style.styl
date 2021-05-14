@@ -1,17 +1,19 @@
 @import 'fonts.css'
+
 vcred = #FE4D4A
 :root
   --slider-tooltip-arr: 20px
-body
+.zagluha
+  width: 500px
+  height 1000px
+  background-color #ccc
+
+
+.test-widget
+  margin-left:25px
   font-family: Roboto-Regular
-.stack 
-  display: flex
-.stack__coin 
-  width: 55px
-  height: 55px
-  background-image: url(../img/coin.svg)
-  margin-right: -40px
 .screen1
+  margin-bottom: 16px
   &__title
     font-family:Roboto-Medium
     font-size: 22px
@@ -61,6 +63,7 @@ body
     position: absolute
     padding: 5px
     bottom: 30px
+    -moz-transform:translate(0,-3px)
     border-radius: 5px
     &::after
       content: ''
@@ -69,3 +72,21 @@ body
       bottom: -12px
       border: 7px solid transparent
       border-top: 7px solid vcred
+
+.final-screen
+  display: none
+  margin-top:150px
+  &__title
+    font-family:Roboto-Medium
+    font-size: 22px
+    font-weight: 500
+
+.invest-types
+  
+.stack 
+  display: flex
+.stack__coin 
+  width: 55px
+  height: 55px
+  background-image: url(../img/coin.svg)
+  margin-right: -40px
