@@ -1,19 +1,48 @@
 @import 'fonts.css'
 
 vcred = #FE4D4A
+vcpink= #FEEBEF
+circleOptions()
+  fill:none
+  cx:78px
+  cy:78px
+  r:63px
+  stroke-dasharray: @r*2*PI
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+  transition: 2s
+
+tip()
+  content: ''
+  position: absolute
+  bottom: -12px
+  border: 7px solid transparent
+  border-top: 7px solid vcred
+
 :root
   --slider-tooltip-arr: 20px
+
+rupture.scale = 0 400px 600px 800px 1050px 1
+
 .zagluha
-  width: 500px
-  height 1000px
+  width: 640px
+  height 300px
   background-color #ccc
+  +below(648px)
+    width: 100%
 
 
 .test-widget
-  margin-left:25px
+  padding:0 25px
   font-family: Roboto-Regular
+  max-width: 640px
+  box-sizing: border-box
+  +below(648px)
+    max-width:none
+
 .screen1
   margin-bottom: 16px
+  margin-bottom: 45px
   &__title
     font-family:Roboto-Medium
     font-size: 22px
@@ -32,7 +61,7 @@ vcred = #FE4D4A
     font-size: 18px
   &__range
     -webkit-appearance: none
-    width: 454px
+    width: calc(100% - 120px);
     height: 9px
     background: #E2E2E2
     border-radius: 8px
@@ -66,12 +95,8 @@ vcred = #FE4D4A
     -moz-transform:translate(0,-3px)
     border-radius: 5px
     &::after
-      content: ''
-      position: absolute
+      tip()
       left: var(--slider-tooltip-arr) 
-      bottom: -12px
-      border: 7px solid transparent
-      border-top: 7px solid vcred
 
 .final-screen
   display: none
@@ -80,13 +105,222 @@ vcred = #FE4D4A
     font-family:Roboto-Medium
     font-size: 22px
     font-weight: 500
+  &__invest-types
+    display: flex
+    +below(648px)
+      flex-direction: column
+  &__additional-info
+    margin: 24px -25px 0 -25px;
+    background-color: vcpink
+
 
 .invest-types
-  
+  &--s, 
+  &--m, 
+  &--l
+    margin-right: 25px
+    position: relative
+    +below(648px)
+      margin-top: 35px
+
+
+.invest-types
+  &--s
+  +above(647px)
+    padding-left:10px
+  &--l
+    min-width: 206px
+    max-width: 206px
+    +above(647px)
+      padding-right: 10px
+
+.invest-types
+  &__summ
+    font-family: Roboto-Medium
+    font-weight: 700
+    font-size: 25px
+    color: vcred
+    margin: 15px 0
+  &__more
+    background-color: vcpink
+    color: vcred
+    border-radius: 50%
+    width: 20px
+    height: 20px
+    display: inline-block;
+    text-align: center;
+    font-family: RobotoMono-Regular
+    font-size: 13px
+  &__popup
+    position: absolute
+    bottom: 35px
+
+.invest-types--l .invest-types__popup
+  +above(647px)
+    right:0
+
+.invest-types--s .popup::after
+  left:93px
+  +below(648px)
+    left:235px
+.invest-types--m .popup::after
+  left:90px
+  +below(648px)
+    left:234px
+.invest-types--l .popup::after
+  left:270px
+  +below(648px)
+    left:147px
+
+
+.popup
+  display: none
+  background-color: vcred
+  font-family: Roboto-Medium
+  font-size: 14px
+  color:white
+  box-shadow: 0px 9px 10px rgba(254, 77, 74, 0.1);
+  border-radius: 5px;
+  padding: 20px
+  width:299px
+  &__link
+    color:white
+    text-decoration: none
+  &::after
+    tip()
+    left: var(--slider-tooltip-arr) 
+
 .stack 
   display: flex
+  +above(647px)
+    justify-content: center
+
 .stack__coin 
   width: 55px
-  height: 55px
+  height: 56px
   background-image: url(../img/coin.svg)
   margin-right: -40px
+  +above(647px)
+    margin-right: -20px
+    margin-left: -20px
+    
+.additional-info
+  &__toggle
+    padding: 24px 0
+    display: flex
+    justify-content: center;
+    align-items: center;
+  &__statistics
+    display: none
+
+.toggle
+  &__text
+    text-align: center
+    color: vcred
+  &__icon--down,
+  &__icon--up
+    background-image: url('../img/arrow-down.svg')
+    width: 16px
+    height: 7px
+    display: inline-block
+    margin-left: 15px
+  &__icon--up
+    background-image: url('../img/arrow-up.svg')
+
+
+.statistics
+  display: grid
+  grid-template-areas:
+    'median median'\
+    'minimum maximum';
+  justify-items: center
+  &__median
+    grid-area: median
+    padding-top:20px
+    padding-bottom: 26px
+  &__minimum
+    grid-area: minimum
+    max-width: 200px
+  &__maximum
+    grid-area: maximum
+    max-width: 200px
+
+.illustration
+  position: relative
+  background-color #fff
+  border-radius: 50%
+  height: 200px
+  width: 200px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-image: url('../img/money-s.svg')
+  &__value
+    color:vcred
+    font-family: Roboto-Medium
+    font-weight: 700
+    font-size: 22px
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 24px
+    text-align: center;
+
+.median
+  &__illustration
+    display: flex
+    justify-content: center
+.minimum,
+.maximum
+  margin-bottom: 5px
+  &__progress
+    display: flex
+    justify-content: center
+  &__value
+    font-family: Roboto-Medium
+    font-weight: 700px
+    font-size: 20px
+    margin: 20px 0
+    text-align: center
+    color:vcred
+  &__text
+    +below(648px)
+      display: block;
+      text-align: center;
+
+.progress
+  width 156
+  height: 156
+  &__base
+    circleOptions()
+    stroke:white
+    stroke-width: 15
+  &__status
+    circleOptions()
+    stroke: vcred
+    stroke-width: 30
+    stroke-dashoffset: @r*2*PI
+
+
+.start-invest
+  display: flex
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0
+  &__text
+    font-family: Roboto-Medium
+  &__button
+    font-family: Roboto-Medium
+    color:white
+    background-color: vcred
+    width: 134px
+    height: 45px
+    border-radius: 5px
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px
+    text-decoration: none
+
+

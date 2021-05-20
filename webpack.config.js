@@ -39,7 +39,17 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              stylusOptions: {
+                use: ['rupture']
+              }
+            }
+          }]
       },
       {
         test: /\.(png|jpg|svg|gif)$/,

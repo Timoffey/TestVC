@@ -24,6 +24,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "rupture": "^0.7.1",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }
